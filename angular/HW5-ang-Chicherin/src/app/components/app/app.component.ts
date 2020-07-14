@@ -1,0 +1,31 @@
+import { Component } from '@angular/core';
+import {IAlbum} from '../../models/ialbum';
+import {IToDo} from '../../models/ito-do';
+import {NgForm} from '@angular/forms';
+import {TodoService} from '../../services/todo.service';
+import {AlbumService} from '../../services/album.service';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'HW5-ang-Chicherin';
+  album: IAlbum = {};
+  todo: IToDo = {};
+
+  constructor(private todoService: TodoService, private albumService: AlbumService) {
+  }
+
+  s(formElement: NgForm) {
+    this.todoService.getTodo().subscribe(arrayTodo => {
+      const filter = this.todoService.filterTodo(this.todo.completed, arrayTodo);
+      console.log(filter);
+    });
+    this.albumService.getAlbums().subscribe(arrayAlbums => {
+      const filter = this.albumService.findAlbums(arrayAlbums, formElement.controls.album.value);
+      console.log(filter);
+    });
+  }
+}
