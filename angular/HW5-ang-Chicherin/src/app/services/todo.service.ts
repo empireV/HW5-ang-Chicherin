@@ -14,7 +14,7 @@ export class TodoService {
     return this.httpClient.get<IToDo[]>('https://jsonplaceholder.typicode.com/todos');
   }
 
-  filterTodo(completed: string, todos: IToDo[]): IToDo[] {
+  filterTodo(todos: IToDo[], completed: boolean): IToDo[] {
     return todos.filter(value => value.completed === completed);
   }
 
