@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
-import {IAlbum} from '../../models/ialbum';
-import {IToDo} from '../../models/ito-do';
-import {NgForm} from '@angular/forms';
-import {TodoService} from '../../services/todo.service';
-import {AlbumService} from '../../services/album.service';
+import {FormControl, FormGroup} from '@angular/forms';
+
 
 @Component({
   selector: 'app-root',
@@ -11,25 +8,36 @@ import {AlbumService} from '../../services/album.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'HW5-ang-Chicherin';
-  album: IAlbum = {};
-  todo: IToDo = {};
-
-  constructor(private todoService: TodoService, private albumService: AlbumService) {
+  title = 'HW6-ang-Chicherin';
+  myForm: FormGroup;
+  constructor() {
+    this.myForm = new FormGroup({
+      login: new FormControl(''),
+      pass: new FormControl(''),
+      confpass: new FormControl('')
+    }, this.passValidator.bind(this));
   }
 
-  s(formElement: NgForm) {
-    this.todoService.getTodo().subscribe(arrayTodo => {
-      console.log(typeof arrayTodo[0].completed);
-      console.log(typeof this.todo.completed);
-      const boolVal = (this.todo.completed == 'true');
-      console.log(typeof boolVal);
-      const filter = this.todoService.filterTodo(arrayTodo, boolVal);
-      console.log(filter);
-    });
-    this.albumService.getAlbums().subscribe(arrayAlbums => {
-      const filter = this.albumService.findAlbums(arrayAlbums, formElement.controls.album.value);
-      console.log(filter);
-    });
+  save(myForm: FormGroup): void {
+    console.log(myForm);
+  }
+
+  loginValidator(myForm: FormGroup): number {
+    const login = myForm.controls.login.value;
+    let status;
+    if (login.length < 5) {
+    status = -1;
+    } else if (login.length > 10) {
+      status = 1;
+    } else {
+      status = 0;
+    }
+    return status;
+  }
+
+  passValidator(myForm: FormGroup): object | null {
+    const firstPass = myForm.controls.pass.value.toLowerCase();
+    const secondPass = myForm.controls.confpass.value.toLowerCase();
+    return firstPass === secondPass ? null : {passError: true};
   }
 }
