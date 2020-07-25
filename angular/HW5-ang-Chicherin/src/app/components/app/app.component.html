@@ -1,15 +1,3 @@
-<form #formElement="ngForm" (ngSubmit)="s(formElement)">
-  <div><label>
-    <input type="number" [(ngModel)]="album.userId" #userId="ngModel" name="album" required>
-    User album
-  </label></div>
-  <div>
-    <label>Completed todo - </label>
-    <select name="todo" #completed="ngModel" [(ngModel)]="todo.completed" required>
-      <option [value]="true">true</option>
-      <option [value]="false">false</option>
-    </select>
-  </div>
-  <button type="submit" [disabled]="!completed.valid && !userId.valid">Search</button>
-</form>
+<router-outlet name="menu"></router-outlet>
 <router-outlet></router-outlet>
+<router-outlet name="footer"></router-outlet>
