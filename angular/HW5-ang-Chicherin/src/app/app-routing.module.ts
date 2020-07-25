@@ -5,8 +5,12 @@ import {FooterComponent} from './components/footer/footer.component';
 
 
 const routes: Routes = [
-  {path: '', outlet: 'menu', component: MenuComponent},
-  {path: '', outlet: 'footer', component: FooterComponent}
+  {path: 'showMenu', outlet: 'menu', component: MenuComponent, children: [
+      {path: 'users', loadChildren: () => import('./modules/user/user.module').then(m => m.UserModule)},
+      {path: 'posts', loadChildren: () => import('./modules/post/post.module').then(value => value.PostModule)},
+      {path: 'comments', loadChildren: () => import('./modules/comment/comment.module').then(value => value.CommentModule)}
+    ]},
+  {path: 'showFooter', outlet: 'footer', component: FooterComponent}
 ];
 
 
