@@ -12,6 +12,6 @@ import {HttpClientModule} from '@angular/common/http';
     CommonModule,
     CommentRoutingModule,
     HttpClientModule
-  ]
+  ],
 })
 export class CommentModule { }

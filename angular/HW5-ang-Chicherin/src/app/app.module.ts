@@ -10,19 +10,21 @@ import { FooterComponent } from './components/footer/footer.component';
 import { SingleUserComponent } from './components/single-user/single-user.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MenuComponent,
-    FooterComponent,
-    SingleUserComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        MenuComponent,
+        FooterComponent,
+        SingleUserComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule
+    ],
+    providers: [],
+    exports: [
+    ],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

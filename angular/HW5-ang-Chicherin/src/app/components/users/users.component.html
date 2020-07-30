@@ -1,3 +1,3 @@
 <hr>
 <router-outlet></router-outlet>
-<div *ngFor="let user of users">{{user.id}} - {{user.username}} - {{user.name}} <a [routerLink]="[user.id]">details</a></div>
+<div *ngFor="let user of users">{{user.id | myFirst : 'NUMBER'}} - {{user.username | uppercase}} - {{user.name}} <a [routerLink]="[user.id]">details</a></div>
