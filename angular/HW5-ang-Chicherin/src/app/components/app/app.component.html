@@ -1,7 +1,8 @@
+<div style="text-align: center; font-size: 45px; font-weight: bold">{{count}}</div>
 <router-outlet>
   <div><a [routerLink]="[{outlets: {menu: 'showMenu', footer: 'showFooter'}}]">Click Me!!!</a></div>
 </router-outlet>
 <router-outlet name="menu"></router-outlet>
 <hr>
-<app-footer></app-footer>
+<app-footer (emit)="catch($event)"></app-footer>
 <router-outlet name="footer"></router-outlet>

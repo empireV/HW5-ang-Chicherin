@@ -7,8 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'HW7-ang-Chicherin';
+  count = 0;
 
   constructor() {
   }
 
+  catch($event: number) {
+    this.count = $event;
+  }
 }
