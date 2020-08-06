@@ -4,16 +4,17 @@ import { CommonModule } from '@angular/common';
 import { UserRoutingModule } from './user-routing.module';
 import {UsersComponent} from '../../components/users/users.component';
 import {HttpClientModule} from '@angular/common/http';
-import {MyFirstPipe} from '../../my-first.pipe';
+import {PipesModule} from '../pipes/pipes.module';
 
 
 @NgModule({
-  declarations: [UsersComponent, MyFirstPipe],
+  declarations: [UsersComponent],
   imports: [
     CommonModule,
     UserRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    PipesModule
   ],
-  exports: [MyFirstPipe]
+  exports: []
 })
 export class UserModule { }
